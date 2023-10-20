@@ -16,8 +16,8 @@ message("Protobuf LIBRARIES: ${Protobuf_LIBRARIES}")
 INCLUDE_DIRECTORIES(${Protobuf_INCLUDE_DIRS})
 # proto files
 set(PROTO_FILES
-        FrameInfoService.proto
-        FrameInfo.proto
+        proto/FrameInfoService.proto
+        proto/FrameInfo.proto
 )
 # found proto files
 message(${PROTO_FILES})
