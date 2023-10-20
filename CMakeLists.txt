@@ -34,19 +34,21 @@ target_link_libraries(proto
 # get plugin location
 GET_TARGET_PROPERTY(grpc_cpp_plugin_location gRPC::grpc_cpp_plugin LOCATION)
 # compile the message types
-protobuf_generate(TARGET proto LANGUAGE cpp)
+protobuf_generate(
+    TARGET proto
+    IMPORT_DIRS ${CMAKE_CURRENT_LIST_DIR}
+    LANGUAGE cpp
+)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 # compile the GRPC services
 protobuf_generate(
-        TARGET
-        proto
-        LANGUAGE
-        grpc
+        TARGET proto
+        IMPORT_DIRS ${CMAKE_CURRENT_LIST_DIR}
+        LANGUAGE grpc
         GENERATE_EXTENSIONS
         .grpc.pb.h
         .grpc.pb.cc
-        PLUGIN
-        "protoc-gen-grpc=${grpc_cpp_plugin_location}"
+        PLUGIN "protoc-gen-grpc=${grpc_cpp_plugin_location}"
 )
