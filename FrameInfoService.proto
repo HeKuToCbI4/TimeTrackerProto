@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "FrameInfo.proto";
+import "proto/FrameInfo.proto";
 
 package telemetry;
 
